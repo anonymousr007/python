@@ -33,3 +33,42 @@ Working of my organization teach coding and development such as web development,
 21. Web Developer Co-head at INNOVA DTU
 22. Public Relation Manager at Elixir DTU
 23. Technical Team AND Marketing Member at Codechef DTU
+24. //Codeforces #712 A
+#include<bits/stdc++.h>
+#define endl '\n'
+typedef long long ll;
+using namespace std;
+
+#define Fast       ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+
+int main(){
+    Fast
+    int tc = 1; cin>>tc;
+    for(int t = 0; t < tc; t++){
+        string s; cin>>s;
+        int n = s.length();
+        bool work = false;
+        for(int i = 0; i < (n+1)/2; i++){
+            if(s[i] !='a'){
+                work = true;
+                cout<<"YES"<<endl;
+                string t = s.substr(0, n-i);
+                cout<<t<<'a';
+                t = s.substr(n-i);
+                cout<<t<<endl;
+                break;
+            }
+            else if(s[n-i-1] != 'a'){
+                work = true;
+                cout<<"YES"<<endl;
+                string t = s.substr(0, i+1);
+                cout<<t<<'a';
+                t = s.substr(i+1);
+                cout<<t<<endl;
+                break;
+            }
+        }
+        if(!work)cout<<"NO"<<endl;
+    }
+    return 0;
+}

@@ -72,3 +72,44 @@ int main(){
     }
     return 0;
 }
+
+
+
+
+
+#include<bits/stdc++.h>
+#define endl '\n'
+typedef long long ll;
+using namespace std;
+
+#define Fast       ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+
+int main(){
+    Fast
+    int tc = 1; cin>>tc;
+    for(int t = 0; t < tc; t++){
+        int n; string a, b; cin>>n>>a>>b;
+        int pref[n+1] = {};
+
+        for(int i = 0; i < n; i++){
+            if(a[i] == '1')pref[i+1] = pref[i]+1;
+            else pref[i+1] = pref[i] - 1;
+        }
+
+        //for(int i = 0; i <=n; i++)cout<<pref[i]<<' ';
+        //cout<<endl;
+
+        bool work = true;
+        bool flip = false;
+        for(int i = n-1; i >= 0; i--){
+            if((!flip && a[i] == b[i]) || (flip && a[i] != b[i]))continue;
+            else if(pref[i+1] == 0){
+                flip = !flip;
+            }
+            else {work = false;break;}
+        }
+
+        cout<<(work?"YES":"NO")<<endl;
+    }
+    return 0;
+}

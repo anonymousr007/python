@@ -113,3 +113,75 @@ int main(){
     }
     return 0;
 }
+
+
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+void solve(){
+ ll n;
+ cin>>n;
+ string str;
+ cin>>str;
+ string a ="",b ="";
+        for(ll i=0;i<n;++i)
+        {
+            if(i % 2 == 0)
+                a += '(';
+            else
+                a += ')';
+        }
+        ll count_open = 0,count_close = 0;
+        bool flag = true;
+        for(ll i=0;i<n;++i)
+        {
+            if(str[i] == '1')
+            {
+                b += a[i];
+                if(a[i] == '(')
+                {
+                    count_open++;
+                }
+                else
+                {
+                    count_close++;
+                    if(count_close > count_open)
+                    {
+                        flag = false;
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                if(a[i] == '(')
+                {
+                    b += ')';
+                    count_close++;
+                    if(count_close > count_open)
+                    {
+                        flag = false;
+                        break;
+                    }
+                }
+                else
+                    b += '(',count_open++;
+            }
+        }
+            if(!flag || (count_open != count_close))
+                cout<<"NO\n";
+            else
+            {
+                cout<<"YES\n";
+                cout<<a<<"\n";
+                cout<<b<<"\n";
+            }
+}
+
+int main(){
+  ll t;
+  cin>>t;
+//    t=1;
+  while(t--)
+  solve();
+}
